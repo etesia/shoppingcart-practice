@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <a class="navbar-brand nav-link" id="storeText" routerLink="/" style='border-right:2px solid #8a8585'>Go to Store&nbsp;<span id="storeIcon" class="material-icons">
+    store
+    </span>&emsp;&emsp;&nbsp;</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" id="shoppingText" routerLink="/shopping-cart">&nbsp;&nbsp;Shopping Cart&nbsp;<i id="shoppingIcon" class="material-icons">
+          shopping_cart
+          </i>&emsp;&emsp;&emsp;</a>
+      </li>
+      <li *ngIf="!AuthService.user && !AuthService.Accuser" class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <!-- *ngIf="user" 代表有User登入 才顯示選單 不然就上上面的login -->
+
+      <li ngbDropdown *ngIf="user()" class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user()}}</a>
+
+      <!-- <li ngbDropdown *ngIf="AuthService.user" class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{AuthService.user.displayName}}</a> -->
+
+
+      <!-- <li ngbDropdown *ngIf="AuthService.Accuser" class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">user</a> -->
+
+
+
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+          <a class="dropdown-item" (click)="logOut()"> Log Out</a>
+        </div>
+    </ul>
+  </div>
+</nav>

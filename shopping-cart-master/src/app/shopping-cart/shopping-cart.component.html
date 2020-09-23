@@ -1,0 +1,71 @@
+<!-- {{[checkoutList | json]}} -->
+<br>
+
+<h1 style="color: #54b4d1">Shopping Cart</h1>
+<br>
+<div class="row col-10" >
+  <p>
+    You have <span id="totalItemText">{{totalItems}}</span> items in your shopping cart.
+  </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="text-left">Product</th>
+        <th class="text-center" style="width: 230px">Quantity</th>
+        <th class="text-right" style="width: 200px">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of checkoutList; let i=index">
+        <td style="vertical-align: middle">
+          <div>
+            <button (click)="itemDelete(c, i, checkoutListKeys, checkoutList)"class="btn btn-warning">
+              Delete
+            </button>
+          </div>
+        </td>
+        <!-- <td [ngClass]="c['nums']>0 ? 'null': 'lineThrough'" style="vertical-align: middle">{{checkoutListKeys[i]}} -->
+        <td style="vertical-align: middle">{{checkoutListKeys[i]}}
+        </td>
+        <td class="text-center">
+        <button class="btn btn-sencondary addSubbtn" (click)="isSub(checkoutListKeys[i])">-</button>
+        {{c["nums"]}}
+        <button class="btn btn-sencondary addSubbtn" (click)="isAdd(checkoutListKeys[i])">+</button>
+        </td>
+        <td class="text-right" style="vertical-align: middle">
+          {{c["price"] * c["nums"] | currency:'TWD':'symbol'}}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="text-right">{{totalMoney | currency:'TWD':'symbol'}}</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th class="text-left">
+          <button (click)="clearCart()" class="btn btn-sencandary">
+          Clear Shopping Cart
+          </button>
+        </th>
+        <th></th>
+        <th class="text-right">
+          <button (click)="onClick()" class="btn btn-info">
+            Checkoout
+            <i id="checkoutIcon" class="material-icons">
+              receipt_long
+            </i>&emsp;
+          </button>
+        </th>
+      </tr>
+
+    </tfoot>
+  </table>
+
+
+
+

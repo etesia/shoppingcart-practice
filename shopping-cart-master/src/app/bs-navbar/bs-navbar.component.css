@@ -1,0 +1,23 @@
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+#shoppingIcon {
+  font-size: 26px;
+}
+
+#shoppingIcon {
+  position: fixed;
+  padding-top: 4px;
+
+}
+#storeIcon {
+  font-size: 32px;
+  position: fixed;
+  top: 18px;
+}
+
+#storeText {
+  padding-top: 2px;
+}

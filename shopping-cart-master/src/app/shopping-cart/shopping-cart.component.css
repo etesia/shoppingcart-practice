@@ -1,0 +1,23 @@
+.addSubbtn {
+  font-size: 20px;
+  width: 45px;
+  /* height: 40px; */
+}
+
+.lineThrough {
+  text-decoration: line-through;
+  ;
+}
+
+#checkoutIcon {
+  position: fixed;
+  padding-top: 2px;
+}
+
+
+#totalItemText {
+  border-radius: 100px;
+  background: #fdcc72;
+  padding: 8px;
+  width: 15px;
+}

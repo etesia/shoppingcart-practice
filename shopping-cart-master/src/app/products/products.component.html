@@ -1,0 +1,49 @@
+
+
+<div class="row">
+  <div class="col-3">
+    <div class="card">
+      <div class="list-group">
+        <a routerLink="/"
+          class="list-group-item list-group-item-action list-group-item-info"
+          [class.active]="!category">
+          All products</a>
+
+        <a
+          *ngFor="let c of CategoryList$ | async"
+          routerLink="/"
+          [queryParams]="{ category: c.$key }"
+          class="list-group-item list-group-item-action list-group-item-info"
+          [class.active]="category===c.$key">
+          {{ c.name }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col">
+    <div class="row">
+      <ng-container *ngFor="let p of filteredProducts; let i = index">
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src={{p.imageurl}} alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ p.title }}</h5>
+              <p class="card-text">{{p.price | currency:'TWD':'symbol'}}</p>
+
+                <div class="row">
+                  <button (click)="onSub(p.title, p.price)" class="btn btn-info col-4">-</button>
+                  <div *ngIf="cartDict[p.title]" id="text" class="col-4">{{cartDict[p.title]['nums']}} in cart</div>
+                  <div *ngIf="!cartDict[p.title]" id="text" class="col-4">0 in cart</div>
+                  <button (click)="onAdd(p.title, p.price)" class="btn btn-info col-4">+</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="(i+1) % 2 === 0" class="w-100"><br></div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
